@@ -1,13 +1,76 @@
-body {
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  background-color: #ffffff;
+}
+
+.todo-container {
+  width: 40%;
+  margin: 10px auto;
+  height: 100vh;
+}
+
+.todo-item {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.toast-container {
+  position: absolute;
+  top: 0;
+  min-width: 300px;
+  right: 5px;
+  background-color: #3aee58;
+  color: #ffffff;
+}
+.completed-todo {
+  text-decoration: line-through;
+  color: #cccccc;
+}
+.filters > p >span {
+  margin: 0 5px;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.delete-icon {
+  color: #e61313;
+  cursor: pointer;
+}
+
+.modal-button {
+  display: flex;
+  justify-content: flex-end;
+}
+.modal-header {
+  background-color: #fa3262;
+  color: #ffffff;
+}
+.close {
+  color: #ffffff;
+}
+
+.loader {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .todo-container {
+    width: 100%;
+  }
 }
