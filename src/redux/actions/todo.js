@@ -1,5 +1,6 @@
 import todoSlice from '../reducers/todo';
 import { fetchTodos } from './todos';
+import { convertUrlToHttps } from '../../utils/index';
 export const addTodo = (todo, onSuccess) => {
   const url = process.env.REACT_APP_API_URL;
   const { addTodoFailure, addTodoRequest, addTodoSuccess } = todoSlice.actions;
@@ -31,8 +32,9 @@ export const toggleTodo = (todo, onSuccess) => {
     let body = {
       completed: !todo.completed,
     };
+   const url = convertUrlToHttps(todo.url)
     try {
-      await fetch(todo.url, {
+      await fetch(url, {
         method: 'PATCH',
         body: JSON.stringify(body),
         headers: {
@@ -52,9 +54,10 @@ export const deleteTodo =  (todo, onSuccess) => {
   const message = `Todo item has been successfully deleted`
   const { deleteTodoSuccess, deleteTodoFailure, deleteTodoRequest } = todoSlice.actions;
   return async dispatch => {
+    const url = convertUrlToHttps(todo.url)
     try {
       dispatch(deleteTodoRequest());
-      await fetch(todo.url, {
+      await fetch(url, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

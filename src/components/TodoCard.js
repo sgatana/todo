@@ -12,8 +12,8 @@ export default function TodoCard({ todo, onToggleToast }) {
   let { deleting } = useSelector(state => state.todo);
   const dispatch = useDispatch();
 
-  const onChange = e => {
-    dispatch(toggleTodo(todo, onToggleToast));
+  const onChange = async e => {
+    await dispatch(toggleTodo(todo, onToggleToast));
     setChecked(e.target.checked);
   };
 
@@ -21,9 +21,13 @@ export default function TodoCard({ todo, onToggleToast }) {
     setShowModal(!showModal)
   }
 
+  const onSuccess = () => {
+    onToggleModal()
+    onToggleToast()
+  }
+
   const onDelete = async () => {
-      await dispatch(deleteTodo(todo, onToggleToast))
-      onToggleToast()
+      dispatch(deleteTodo(todo, onSuccess))
   }
 
   useEffect(() => {

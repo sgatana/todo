@@ -78,7 +78,7 @@ export default function Todos() {
                 />
               </div>
               <div className='col-3'>
-                <SpinnerButton type='submit' working={working} block>
+                <SpinnerButton type='submit' working={working} disabled={working} block>
                   Save
                 </SpinnerButton>
               </div>
@@ -116,7 +116,7 @@ export default function Todos() {
           <Loader />
         ) : (
           <div className='todo-list'>
-            {todos
+            {todos.length
               ? todos.map(todo => {
                   return (
                     <div key={todo.url} className='row todo-item'>
@@ -124,7 +124,7 @@ export default function Todos() {
                     </div>
                   );
                 })
-              : <p>No todos found</p>}
+              : <p>No todos found please add one!</p>}
           </div>
         )}
       </div>
